@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="static/images/10952096069483-363x81.png" type="image/x-icon">
+  <meta name="description" content="">
+  <title>Home</title>
+
+ <link rel="stylesheet" href="{{ url_for('static',filename='css/se-icons.css')}}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tether.min.css')}}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styledp.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styletheme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/additional.css')}} ">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesm.css')}}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.socialfeed.css')}}">
+</head>
+<body>
+
+<style>
+ .carousel-inner
+  {
+
+
+     height: 670px;
+ }
+	@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(1, 1);
+  }
+  to {
+    -webkit-transform: scale(1.5, 1.5);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.5, 1.5);
+  }
+}
+
+.carousel-inner .item > img {
+  -webkit-animation: zoom 20s;
+  animation: zoom 20s;}
+
+ ul { padding:0 }
+
+ </style>
+
+{%  block additionalscripts %}{% endblock %}
+
+<div >
+    {% include 'includes/_navbarclinic.html' %}
+    {% block body %}{% endblock %}
+</div>
+
+
+{% include 'includes/_footer.html' %}
+</body>
+</section>
+
+
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/tether.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/smooth-scroll.js"></script>
+  <script src="static/js/script.min.js"></script>
+  <script src="static/js/jquery.mb.ytplayer.min.js"></script>
+  <script src="static/js/jquery.mb.vimeo_player.js"></script>
+  <script src="static/js/jarallax.min.js"></script>
+  <script src="static/js/bootstrap-carousel-swipe.js"></script>
+  <script src="static/js/jquery.touch-swipe.min.js"></script>
+  <script src="static/js/script.js"></script>
+  <script src="static/js/scripttheme.js"></script>
+
+
+ <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbri-down mbr-iconfont"></i></a></div>
+</html>

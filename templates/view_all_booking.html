@@ -1,0 +1,179 @@
+{% extends 'layoutclinic.html' %}
+ {% from "includes/_formhelper.html" import render_field %}
+{% block body %}
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/apo.css') }}">
+
+   <hr><br><br><div style="width:800px; margin:0 auto; "><br><h1>YISHUN POLYCLINIC</h1><br>
+<div class="btn-group-sm">
+    <input type="button" class="btn btn-primary" value="Refresh Page" onClick="window.location.reload()"> <input type="button" class="btn btn-primary" value="See this clinic's queue" onClick="window.location='/Clinic Queue - YishunPolyClinic.html';"></div>
+<h1 id="kullanicihebir"><br><hr><h1>Pending Appointment</h1>
+
+    <table class="table kullaniciTablosu">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Email</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+
+
+{% for booking in bookings %}
+    <tr>
+
+
+        <td>
+            <span>
+            <img width="40" class="img-circle" alt="User Avatar" src="https://t.hizliresim.com/3vp0pp-s.jpg">
+            </span><p id ="demo"<h6>{{  booking.get_publisher() }}</p></h6>
+        </td>
+        <td><h6>{{ booking.get_category() }}  </h6></td>
+        <td>
+
+		<div class="btn-group-sm">
+
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/delete_booking/{{booking.get_pubid()}}'" >Delete</button>
+            <button  class="btn btn-primary" id="submButton" data-toggle="modal" data-target="#myModal">Patient Details</button>
+             <form method="POST" action="">
+                 <div class="btn-group-sm">
+    <button class="btn btn-primary btn-lg" id="submitButton" data-toggle="modal" data-target="#mModal">Add to Queue</button>
+{%  endfor %}
+
+		<td>
+        {% for booking in bookings %}
+{% if form.errors %}
+    <div class="">
+        <ul>
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                    <li></li>
+                {% endfor %}
+
+ {% endfor %}
+        </ul>
+    </div>
+
+
+
+
+        {% endif %}
+            <style>
+#myP {
+    visibility: hidden;
+}</style>
+  </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="">
+					<div class="modal-dialog">
+					<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Patient Details </h5>
+					</div>
+
+					<div class="modal-body">
+
+                   <p><h4>Name:{{ booking.get_publisher() }}
+ </h4>
+                        <br><h4>Birthday:{{ booking.get_status() }}</h4>
+                        <br><h4>Gender: Male</h4>
+                        <br><h4>NRIC:{{ booking.get_title() }} </h4>
+                            <br><h4>Choice of Clinic:{{ booking.get_isbnno() }} </h4>
+                        <br><h4>Reason For Appoinment:{{ booking.get_synopsis() }} </h4>
+                        <br><h4>Notable Allergies:{{ booking.get_author() }}</h4>
+
+					</div>
+
+					<div class="modal-footer">
+
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+					</div>
+
+
+
+
+
+                    </div></div></td>
+
+		</tr>
+
+
+
+
+</table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<center>
+
+
+
+
+
+
+
+				<p id="myP">{{ render_field(form.title, class_="form-control", value =  booking.get_title()  ) }}
+
+
+
+                    {{ render_field(form.category, class_="form-control",value =  booking.get_category() ) }}
+
+                    {{ render_field(form.publisher, class_="form-control",value =  booking.get_publisher()) }}
+
+                    {{ render_field(form.status, class_="form-control",value = booking.get_status()) }}
+
+
+     {{ render_field(form.isbn, class_="form-control",value = booking.get_isbnno())}}
+
+
+                        {{ render_field(form.author, class_="form-control",value = booking.get_author()) }}
+
+
+                {{ render_field(form.synopsis, class_="form-control",value = booking.get_synopsis()) }}
+
+
+
+                {{ render_field(form.frequency, class_="form-control",value = '98851420') }}
+
+                 {{ render_field(form.patient_status, class_="form-control",value = 'In Queue') }}
+                </p>
+
+
+
+{% endfor %}
+
+
+
+
+
+<br><br>
+
+            </div>
+        </div>
+            </div>
+        </div></center>
+<div class="modal fade" id="mModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+					<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Status </h5>
+					</div>
+					<div class="modal-body">
+					<p>Success! Your appointment has been addded!
+					<br>Your medical center of choice will reply you shortly.</p>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+					</div>
+					</div>
+    </form><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+
+            </tr>
+
+
+        </tbody>
+    </table>

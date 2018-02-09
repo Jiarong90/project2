@@ -1,0 +1,28 @@
+{% extends 'motdframe.html' %}
+
+{% block body %}
+    {% from "includes/_formhelper.html" import render_field %}
+    <h1>New Publication</h1>
+    <script>
+        $(document).ready(function () {
+            var publicationType = $('input[name=pubtype]:checked').val();
+        });
+    </script>
+
+
+    <form method="POST" action="">
+
+        <div class="form-group">
+            {{ render_field(form.title, class_="form-control") }}
+        </div>
+        <div class="form-group">
+
+                {{ render_field(form.description, class_="form-control") }}
+        </div>
+
+        <div class="form-group col-md-1">
+            <input type="submit" value="Submit" class="btn btn-info"/></div>
+
+    </form>
+
+{% endblock %}

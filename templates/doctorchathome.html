@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/docchathome.css') }}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="parallax">
+    <h1 style="font-size: 55px;"> WELCOME BACK,
+    <br> Doctor </h1>
+    <br>
+    <p> View your messages from your patients
+    <br> in an online consultation. </p>
+    <br>
+    <button type="button" id="firstbutton" class="button" onclick="window.location.href='{{ url_for( 'viewusers' ) }}';">Go To Chatroom!</button>
+    </div>
+</body>
+</html>

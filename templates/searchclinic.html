@@ -1,0 +1,102 @@
+
+{% extends "layoutadmin.html" %}
+
+    {%  block body %}
+
+
+        <style>
+body{
+    padding-top:20px;
+}
+
+
+        </style>
+
+
+
+<h2> Hello World </h2>
+
+        <!-- /.col-lg-3 -->
+<br><br><br>
+        <br><br><br>
+
+        <div class="col-lg-9">
+{% for clinic in specific_clinic %}
+    {% if clinic.get_region()=='N' %}
+ <a href="{{ url_for("get_clinic", title=clinic.get_title() ) }}">
+                       <img class="mySlides" src="{{url_for('send_image',filename=clinic.get_photo()) }}" height="360" style="width:100%">
+                    </a>
+    {% endif %}
+         {% endfor %}
+          <div class="row">
+              {% for clinic in specific_clinic %}
+                   {% if clinic.get_region()=='N' %}
+
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+
+
+
+                <a href="{{ url_for("get_clinic", title=clinic.get_title() ) }}">
+                    <img class="card-img-top" src="{{url_for('send_image',filename=clinic.get_photo()) }}" height="200  " width="400">
+                </a>
+
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="{{ url_for("get_clinic", title=clinic.get_title() ) }}">{{ clinic.get_title() }}</a>
+                  </h4>
+                  <h5>${{ clinic.get_created_date() }}</h5>
+                  <p class="card-text">{{ clinic.get_created_date() }}</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">
+
+                        &#9733;
+
+
+                        &#9734;
+
+                  </small>
+                </div>
+              </div>
+            </div>
+{% endif %}
+                {% endfor %}
+
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+
+
+        <script>
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+
+          <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout:
+        google.translate.TranslateElement.InlineLayout.SIMPLE},
+            'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {%  endblock %}
+

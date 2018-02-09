@@ -1,0 +1,175 @@
+{% extends 'layoutadmin.html' %}
+
+{% block body %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userchathome.css') }}">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="Page.css" />
+    <link rel="stylesheet" type="text/css" href="userchathome.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title> Chat Services </title>
+</head>
+<body>
+
+<!-- Display Parralax Image and Title -->
+
+<div class="parallax">
+<h1 style="font-size: 55px;"> EXPERIENCE REAL-TIME
+<br> VIRTUAL CLINIC </h1>
+<br>
+<p> Real-time chat experience that allows you to
+<br> consult a doctor online. </p>
+<br>
+<button id="firstbutton" onclick="scrollToElement()" class="button">See Our Services</button>
+</div>
+
+
+<!-- Spacing -->
+
+<br>
+<br>
+<br>
+
+<!-- Display Chat Capabilities -->
+
+<div class="container" id="capabilities">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Ease of use</h3>
+      <p>Simply click and</p>
+      <p>go!</p>
+    </div>
+	<div class="vl">
+	</div>
+    <div class="col-sm-4">
+      <h3>Convenience</h3>
+      <p>Can be used at</p>
+      <p>home!</p>
+    </div>
+	<div class="vlt">
+	</div>
+    <div class="col-sm-4">
+      <h3>Seamless experience</h3>
+      <p>Get a professional</p>
+      <p>response from doctors</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Spacing -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- About -->
+
+<div id="about">
+	<h2> WHAT IS THIS? </h2>
+	<hr style="width: 50px; border-style: solid; border-color: red; text-align: center;">
+	<br>
+	<br>
+	<p> We provide healthcare chat services for the people. By using a chat room </p>
+	<p> as a platform for online consultation, you can save your time by consulting </p>
+	<p> a doctor online for minor illnesses without the need to go to a clinic. </p>
+	<p> This will provide convenience and flexibility for you! </p>
+</div>
+
+<!-- Display Services -->
+
+<div id="services">
+	<hr>
+	<h2 style="text-align: center;"> Our Services </h2>
+	<hr style="width: 50px; border-style: solid; border-color: red;">
+	<hr/>
+	<div class="row">
+	  <div class="column">
+		<img src="static/images/Virtualdoc.jpg" style="width: 100%; height: 250px; float: top;">
+		<hr>
+		<h2>Virtual Consultation</h2>
+		<p>Consult our doctors directly online.
+		<br>Yes, at your own seat!</p>
+		<br>
+        <button type="button" id="sbutton" class="button" onclick="window.location.href='{{ url_for( 'login' ) }}';">Take me there!</button>
+          <br>
+	  </div>
+	  <div class="column">
+		<img src="static/images/Medibot.jpg" style="width: 100%; height: 200px; float: top;">
+		<hr>
+		<h2>Check Your Illnesses</h2>
+		<p>Don't want a consultation? Talk to our MediBot
+		<br>to find out more! </p>
+		<br>
+		<button id="sbutton" class="button">Take me there!</button>
+		<br>
+	  </div>
+	  <div class="column">
+		<h2>Column 3</h2>
+		<p>Somtext..</p>
+	  </div>
+	</div>
+</div>
+
+<!-- Spaces -->
+
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!-- Help Section -->
+
+<div id="help">
+<h2> Need Help? </h2>
+<h3> Check out our 3-step guide! </h3>
+<br>
+<br>
+  <div class="left" id="left" style="background: dodgerblue; width:60%;  margin: auto; padding:10px 0 10px;">
+    <div class="content">
+      <h2>Step 1</h2>
+      <h3>Click on 'Take me there! in the Virtual Consultation box above.</h3>
+    </div>
+  </div>
+    <hr width="1" size="500">
+  <div class="right" id="right" style="background: lightgreen; width:60%;  margin: auto; padding:10px 0 10px;">
+    <div class="content">
+      <h2>Step 2</h2>
+      <h3>Key in your full name in the username box provided.</h3>
+    </div>
+  </div>
+    <hr width="1" size="500">
+  <div class="left" id="left" style="background: dodgerblue; width:60%;  margin: auto; padding:10px 0 10px;">
+    <div class="content">
+      <h2>Step 3</h2>
+        <h3>Now, you're ready to begin your consultation! Simply start typing in the chat box to send a message to the doctor.</h3>
+   </div>
+</div>
+</div>
+    <br>
+    <br>
+<!-- Call to Action -->
+
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function scrollToElement(element) {
+	document.getElementById('services').scrollIntoView({block: 'start', behavior: 'smooth'});
+}
+
+</script>
+
+
+</body>
+{% endblock %}

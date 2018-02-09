@@ -1,0 +1,204 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"> </script>
+
+<style>
+
+.movedown{
+    margin-top:66px;
+    text-align:center;
+text-decoration-color:blue;
+    text-decoration:underline;
+}
+
+
+
+
+#hello {
+    display:none;
+    padding: 10px;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    margin-bottom: 5px;
+    background-color: #f1f1f1;
+}
+.totop {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+}
+.totop a {
+    display: none;
+}
+a, a:visited {
+    color: #33739E;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+a:hover {
+    text-decoration: none;
+}
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #33739E;
+    color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #33739E;
+}
+
+/* Common */
+
+body {
+  color: #777;
+  text-align: center;
+}
+
+/* Layout */
+
+.layout {
+  display: none;
+  margin: 20px auto;
+  width: 600px;
+
+  /* try to remove this in FF */
+  table-layout: fixed;
+}
+
+.layout-cell {
+  border: 1px solid #ccc;
+  display: table-cell;
+
+  vertical-align: top;
+
+}
+
+.sidebar {
+  width:40%;
+}
+
+.content {
+  width:40%;
+}
+
+img {
+  max-width: 100%;
+}
+</style>
+
+{% extends 'layoutadmin.html' %}
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+{% block body %}
+    <h1 class="movedown">View or UPDATE All Clinics!!!</h1>
+    <br>
+
+
+    <canvas id="pie-chart" width="800" height="250"></canvas>
+    <br>
+
+{% for clinic in clinics %}
+<div class="layout">
+
+  <div class="layout-cell content">
+                 <img class="card-img-top" src="{{url_for('send_image',filename=clinic.get_photo()) }}" height="300" width="400">
+  </div>
+
+  <div class="layout-cell sidebar">
+    Remove "table-layout: fixed" in CSS for test.
+    <h3> {{ clinic.get_title() }} </h3>
+    <hr>
+      <h4> 95931021 </h4>
+      <hr>
+
+
+                        &#9733;
+
+
+                        &#9734;
+
+  </div>
+
+</div>
+
+{% endfor %}
+
+
+<a href="#" id="loadMore">Load More</a>
+
+<p class="totop">
+    <a href="#top">Back to top</a>
+</p>
+
+
+
+<script>
+
+    new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["North", "Central", "East", "West" ],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#c45850"],
+        data: [{{ countNorth }},{{ countCentral }},{{ countEast }},{{ countWest }}]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Data of clinic created in each region'
+      }
+    }
+});
+
+    </script>
+
+<script>
+
+
+$(function () {
+    $(".layout").slice(0, 3).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".layout:hidden").slice(0, 3).slideDown();
+        if ($(".layout:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
+
+$('a[href=#top]').click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
+
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+        $('.totop a').fadeIn();
+    } else {
+        $('.totop a').fadeOut();
+    }
+});
+
+</script>
+
+{% endblock %}
